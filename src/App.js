@@ -3,7 +3,7 @@ import logo from './logo.svg';
 // import { Select, InputLabel, MenuItem } from '@mui/material';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { AboutPage } from './aboutPage'; // Ensure this import matches your component
+import { AddMovieButton } from './aboutPage'; // Ensure this import matches your component
 import { Login } from './Login';
 import { Register } from './Register';
 import { useAuth } from './context/AuthContext';
@@ -34,21 +34,8 @@ function App() {
                 <MenuItem value={30}>Thirty</MenuItem>
             </Select> */}
             
-            <Router>
-                <Routes>
-                    <Route path="/login" element={<Login onFormSwitch={toggleForm} />} />
-                    <Route path="/aboutPage" element={<AboutPage />} /> {/* Ensure this matches the route */}
-                </Routes>
-
-                {/* Conditionally render based on user authentication status */}
-                {!userLoggedIn ? (
-                    currentForm === "Login"
-                        ? <Login onFormSwitch={toggleForm} />
-                        : <Register onFormSwitch={toggleForm} />
-                ) : (
-                    <AboutPage /> // Automatically show AboutPage if logged in
-                )}
-            </Router>
+         
+            
 
             {/* <Stack direction="row">
                 <Button variant="contained">Click Me</Button>

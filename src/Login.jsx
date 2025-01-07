@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "./context/AuthContext";
 import { doSignInWithEmailAndPassword } from "./config/auth";
-
+import { Link } from "react-router-dom";
 export const Login = (props) => {
     const { setUserLoggedIn } = useAuth(); // Use the setter function
     const [email, setEmail] = useState('');
@@ -71,7 +71,7 @@ export const Login = (props) => {
                     setError('An unexpected error occurred. Please try again.');
             }
         } finally {
-            setIsSigningIn(false);
+             setIsSigningIn(false);
         }
     };
 
@@ -119,13 +119,12 @@ export const Login = (props) => {
                     {isSigningIn ? 'Signing In...' : 'Log In'}
                 </button>
             </form>
-            
-            <button 
-                onClick={() => props.onFormSwitch('Register')} 
-                className="link-btn"
-            >
+            <Link to={"/Register"}>
+            <button>
                 Don't have an account? Register
             </button>
+            </Link>
+            
         </div>
     );
 };

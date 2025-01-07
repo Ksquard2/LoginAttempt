@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
+import { Link } from "react-router-dom";
 import { 
     doCreateUserWithEmailAndPassword, 
     doSignInWithEmailAndPassword 
@@ -62,12 +63,11 @@ export const Register = (props) => {
                     {isRegistering ? 'Registering...' : 'Register'}
                 </button>
             </form>
-            <button 
-                onClick={() => props.onFormSwitch('Login')} 
-                className="link-btn"
-            >
+            <Link to={"/Login"}>
+            <button>
                 Already have an account? Log In here
             </button>
+            </Link>
         </div>
     );
 };

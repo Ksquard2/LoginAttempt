@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getAuth, connectAuthEmulator } from 'firebase/auth';
+import { collection, addDoc } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 // Your web app's Firebase configuration
@@ -23,7 +24,15 @@ const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 const auth = getAuth(app);
-
+const collectionRef = collection(db, "collectionName");
+const addDocument = async (data) => {
+  try {
+    const docRef = await addDoc(collection(db, "collectionName"), data);
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+};
 // Optional: For development, connect to local emulator
 // Uncomment and configure if using Firebase Emulator
 // if (process.env.NODE_ENV === 'development') {
@@ -40,5 +49,7 @@ export {
   auth, 
   db, 
   storage, 
-  analytics 
+  analytics,
+  collectionRef,
+  addDocument
 };

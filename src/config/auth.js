@@ -15,7 +15,7 @@ export const doCreateUserWithEmailAndPassword = async (email, password) => {
                 // If sign-in fails, rethrow the original error
                 throw error;
             }
-        }/Users/k2/Desktop/bp/src/homePage.jsx
+        }
         throw error;
     }
 };
